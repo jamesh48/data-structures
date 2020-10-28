@@ -4,7 +4,6 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    // list.tail = Node(value);
     var newTail = Node(value);
 
     if (!list.head) {
@@ -17,16 +16,25 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-
+    var oldHead = list.head.value;
+    list.head = null;
+    if (list.tail.value) {
+      list.head = list.tail;
+    }
+    return oldHead;
   };
 
   list.contains = function(target) {
+    for (var key in list) {
+      if (list[key].value === target) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return list;
 };
-
-
 
 var Node = function(value) {
   var node = {};
@@ -40,3 +48,7 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// addtoTail O(1)
+// removeHead O(1)
+// contains O(n)
