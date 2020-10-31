@@ -15,13 +15,36 @@ var LinkedList = function() {
     }
   };
 
+  list.removeTail = function() {
+    var oldTail = list.tail;
+    list.tail = null;
+    if (list.head.value) {
+      list.tail = oldTail.previous;
+    }
+    return oldTail.value;
+  };
+
+  list.addToHead = function(value) {
+    var newHead = Node(value);
+    var oldHead = list.head;
+
+    if (!list.head) {
+      list.head = newHead;
+      list.tail = newHead;
+    } else {
+      oldHead.previous = newHead;
+      newHead.next = oldHead;
+      list.head = newHead;
+    }
+  };
+
   list.removeHead = function() {
-    var oldHead = list.head.value;
+    var oldHead = list.head;
     list.head = null;
     if (list.tail.value) {
-      list.head = list.tail;
+      list.head = oldHead.next;
     }
-    return oldHead;
+    return oldHead.value;
   };
 
   list.contains = function(target) {
@@ -36,14 +59,31 @@ var LinkedList = function() {
     return false;
   };
 
+  list.containsKeyOrValue = function(location, target, kOrV) {
+    if (kOrV === 'k') {
+      if (Object.keys(list[location]).includes(target)) {
+        return true;
+      }
+      return false;
+    }
+    if (kOrV === 'v') {
+      if (Object.values(list[location]).includes(target)) {
+        return true;
+      }
+      return false;
+    }
+  };
+
   return list;
 };
+
 
 var Node = function(value) {
   var node = {};
 
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };
