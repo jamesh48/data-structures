@@ -51,5 +51,9 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should return false if the target is undefined', function() {
+    expect(linkedList.contains(undefined)).to.equal(false);
+  });
+
   // add more tests here to test the functionality of linkedList
 });

@@ -11,6 +11,9 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
+  if (!item) {
+    return 'item is not defined';
+  }
   return Object.keys(this._storage).includes(item);
 };
 

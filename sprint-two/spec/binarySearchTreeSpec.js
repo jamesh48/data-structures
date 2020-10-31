@@ -37,4 +37,8 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should return "value is not defined" as an error message if the passed in value is undefined', function() {
+    expect(binarySearchTree.insert()).to.equal('value is not defined');
+  });
 });

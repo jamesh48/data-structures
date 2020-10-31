@@ -25,6 +25,9 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    if (target === undefined) {
+      return false;
+    }
     for (var key in list) {
       if (list[key].value === target) {
         return true;

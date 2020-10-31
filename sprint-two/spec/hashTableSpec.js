@@ -47,6 +47,14 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should return "kwy is undefined" if the k is undefined', function() {
+    expect(hashTable.remove()).to.equal('key is undefined');
+  });
+
+  it('hashing function should return a number', function() {
+    expect(typeof getIndexBelowMaxForKey('string', 10)).to.equal('number');
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

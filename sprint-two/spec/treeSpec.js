@@ -16,6 +16,11 @@ describe('tree', function() {
     expect(tree.children[0].value).to.equal(5);
   });
 
+  it('should not add children if value is not defined', function() {
+    tree.addChild(undefined);
+    expect(tree.children.length).to.equal(0);
+  });
+
   it('should return true for a value that the tree contains', function() {
     tree.addChild(5);
     expect(tree.contains(5)).to.equal(true);
@@ -39,6 +44,10 @@ describe('tree', function() {
     tree.children[1].addChild(8);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+  });
+
+  it('should return false if the target is undefined', function() {
+    expect(tree.contains()).to.equal(false);
   });
 
 });

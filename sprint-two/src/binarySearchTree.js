@@ -11,6 +11,9 @@ var BinarySearchTree = function(value) {
 let treeMethodsX = {};
 
 treeMethodsX.insert = function(value) {
+  if (!value) {
+    return 'value is not defined';
+  }
   let newNode = BinarySearchTree(value);
   this.insertNode(this, newNode);
 };

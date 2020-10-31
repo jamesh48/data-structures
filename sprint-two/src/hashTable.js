@@ -81,6 +81,9 @@ HashTable.prototype.retrieve = function(k) {
 };
 
 HashTable.prototype.remove = function(k) {
+  if (k === undefined) {
+    return 'key is undefined';
+  }
   var index = getIndexBelowMaxForKey(k, this._limit);
   this._storage.each((item, i, collection) => delete collection[index]);
 };
